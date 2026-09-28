@@ -230,6 +230,9 @@ class P115StrmHelperBase(_PluginDeclarativeBase):
     P115StrmHelper 数据库模型基类，提供通用的 CRUD 操作方法
     """
 
+    # 二次继承 plugin_declarative_base() 时，SQLAlchemy 2.0 会严格扫描注解；
+    # 本类只是 CRUD 混入，id / __name__ 不是映射列，必须声明为抽象类
+    __abstract__ = True
     id: Any
     __name__: str
 
